@@ -4,7 +4,7 @@ import { rotateMatrix } from "../rotateMatrix";
 
 export default function Home() {
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState<number[][] | null>(null);
+  const [output, setOutput] = useState<{ clockwise: number[][], counterClockwise: number[][] } | null>(null);
   const [error, setError] = useState('');
 
   const handleRotate = (e: React.FormEvent) => {
@@ -24,7 +24,7 @@ export default function Home() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center dark:text-white">
-          Rotar matriz NxN 90° (sentido horario)
+          Rotar matriz NxN 90°
         </h1>
         
         <div className="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
@@ -58,17 +58,25 @@ export default function Home() {
           )}
 
           {output && (
-            <div className="mt-6">
-              <h2 className="text-xl font-semibold mb-3 dark:text-white">Resultado:</h2>
-              <pre className="bg-gray-50 dark:bg-gray-700 p-4 rounded-md overflow-auto text-sm">
-                {JSON.stringify(output, null, 2)}
-              </pre>
+            <div className="mt-6 space-y-4">
+              <div>
+                <h2 className="text-xl font-semibold mb-2 dark:text-white">Rotación Horaria (90° derecha):</h2>
+                <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md text-sm font-mono">
+                  {JSON.stringify(output.clockwise)}
+                </div>
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold mb-2 dark:text-white">Rotación Anti-horaria (90° izquierda):</h2>
+                <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md text-sm font-mono">
+                  {JSON.stringify(output.counterClockwise)}
+                </div>
+              </div>
             </div>
           )}
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
-          <p>Ingresa una matriz cuadrada en formato JSON para rotarla 90° en sentido horario</p>
+          <p>Ingresa una matriz cuadrada en formato JSON para ver ambas rotaciones</p>
           <p className="mt-1">Ejemplo de entrada: [[1,2],[3,4]]</p>
         </div>
       </div>
