@@ -57,6 +57,36 @@ Esta aplicación web te permite rotar matrices cuadradas (NxN) 90 grados en sent
 - La lógica de rotación está en `src/rotateMatrix.ts`.
 - Si quieres agregar nuevas funcionalidades, ¡adelante! El código es claro y está comentado.
 
+## 📢📢 Manejo de errores
+La app maneja los siguientes errores:
+
+1. Campo vacío
+Si el área de texto está vacía y se intenta rotar, muestra:
+> Por favor, ingresa una matriz en formato JSON.
+2. Formato JSON inválido
+Si el texto ingresado no es un JSON válido, muestra:
+> El formato no es JSON válido. Ejemplo: [[1,2],[3,4]]
+3. Estructura incorrecta
+Si el JSON no es un array de arrays (por ejemplo, un array plano o un objeto), muestra:
+> La estructura debe ser un array de arrays. Ejemplo: [[1,2],[3,4]]
+4. Matriz vacía
+Si la matriz es un array vacío ([]), muestra:
+> La matriz no puede estar vacía.
+5. Filas vacías
+Si alguna fila es un array vacío ([[], []]), muestra:
+> Cada fila debe tener al menos un elemento.
+6. Matriz no cuadrada
+Si las filas no tienen la misma longitud (no es NxN), muestra:
+> La matriz debe ser cuadrada (todas las filas del mismo tamaño).
+7. Valores no numéricos, nulos o vacíos
+Si algún elemento no es un número (por ejemplo, string, null, undefined, boolean, array, etc.), muestra:
+> No se permiten valores vacíos, nulos o no numéricos en la matriz.
+8. Matriz 1x1
+Si la matriz es de tamaño 1x1, muestra una advertencia:
+> La matriz 1x1 no se rota, pero se muestra igual.
+
+
+
 ---
 
 ## 🤝 Créditos y contacto
