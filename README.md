@@ -60,7 +60,18 @@ Esta aplicación web te permite rotar matrices cuadradas (NxN) 90 grados en sent
 ---
 
 ## 🤝 Créditos y contacto
-Desarrollado con Next.js, React y TailwindCSS.
+📫 Me puedes contactar a través de:
+
+- https://github.com/jarombyui
+
+- jaromcamposrodriguez@gmail.com
+
+- https://www.linkedin.com/in/jarom-campos/
+
+Proyectos:
+- https://portafolio-jarom.vercel.app/#home
+
+- Telefono/ Whatys: +51 947726382
 
 ¿Tienes dudas, sugerencias o quieres contribuir? ¡No dudes en abrir un issue o contactarme!
 
