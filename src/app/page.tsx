@@ -28,7 +28,7 @@ function TablaMatriz({ matriz, titulo }: { matriz: number[][], titulo?: string }
 
 export default function Home() {
   const [textoMatriz, setTextoMatriz] = useState('');
-  const [resultadoRotacion, setResultadoRotacion] = useState<{ horario: number[][], antihorario: number[][] } | null>(null);
+  const [resultadoRotacion, setResultadoRotacion] = useState<{ antihorario: number[][] } | null>(null);
   const [error, setError] = useState('');
   const [matrizOriginal, setMatrizOriginal] = useState<number[][] | null>(null);
 
@@ -116,12 +116,6 @@ export default function Home() {
 
           {resultadoRotacion && (
             <div className="mt-6 space-y-4">
-              <div>
-                <TablaMatriz matriz={resultadoRotacion.horario} titulo="Rotación Horaria (90° derecha)" />
-                <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md text-sm font-mono mt-2">
-                  {JSON.stringify(resultadoRotacion.horario)}
-                </div>
-              </div>
               <div>
                 <TablaMatriz matriz={resultadoRotacion.antihorario} titulo="Rotación Anti-horaria (90° izquierda)" />
                 <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md text-sm font-mono mt-2">
