@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rotador de Matrices NxN (90° antihorario)
 
-## Getting Started
+Esta aplicación web te permite rotar matrices cuadradas (NxN) 90 grados en sentido antihorario de forma visual e interactiva. Es ideal para estudiantes, docentes y entusiastas de las matemáticas y la programación que deseen comprender cómo se transforma una matriz al rotarla.
 
-First, run the development server:
+## 🚀 ¿Qué hace esta app?
+- Permite ingresar una matriz cuadrada en formato JSON.
+- Muestra la matriz original y su rotación 90° a la izquierda (antihoraria) como tablas visuales.
+- Valida la entrada y muestra mensajes claros si hay errores de formato o estructura.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🖥️ Requisitos previos
+- Node.js (v18 o superior recomendado)
+- npm (v9 o superior recomendado)
+
+---
+
+## ⚡ Instalación y ejecución
+1. **Clona el repositorio o descarga los archivos.**
+2. Abre una terminal en la carpeta del proyecto y ejecuta:
+   ```bash
+   npm install
+   ```
+3. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+4. Abre tu navegador y visita [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📝 ¿Cómo usar la app?
+1. Ingresa una matriz cuadrada en formato JSON en el área de texto. Ejemplo:
+   ```json
+   [[1,2,3],[4,5,6],[7,8,9]]
+   ```
+2. Haz clic en "Rotar Matriz".
+3. Verás la matriz original y la matriz rotada 90° a la izquierda, ambas como tablas y en formato JSON.
+4. Si hay algún error en la entrada, la app te mostrará un mensaje claro para ayudarte a corregirlo.
+
+---
+
+## 📚 Ejemplo de entrada y salida
+**Entrada:**
+```
+[[1,2],[3,4]]
+```
+**Salida (rotación antihoraria):**
+```
+[[2,4],[1,3]]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Personalización y desarrollo
+- Puedes modificar el diseño, los colores o los textos editando los archivos en `src/app`.
+- La lógica de rotación está en `src/rotateMatrix.ts`.
+- Si quieres agregar nuevas funcionalidades, ¡adelante! El código es claro y está comentado.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🤝 Créditos y contacto
+Desarrollado con Next.js, React y TailwindCSS.
 
-To learn more about Next.js, take a look at the following resources:
+¿Tienes dudas, sugerencias o quieres contribuir? ¡No dudes en abrir un issue o contactarme!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+¡Gracias por usar esta app y que disfrutes aprendiendo sobre matrices! 🎓
