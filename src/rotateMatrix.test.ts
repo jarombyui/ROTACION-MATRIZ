@@ -2,7 +2,10 @@ import { rotateMatrix } from './rotateMatrix';
 
 describe('rotateMatrix', () => {
   it('rota una matriz 2x2', () => {
-    expect(rotateMatrix([[1,2],[3,4]])).toEqual([[3,1],[4,2]]);
+    expect(rotateMatrix([[1,2],[3,4]])).toEqual({
+      clockwise: [[3,1],[4,2]],
+      counterClockwise: [[2,4],[1,3]]
+    });
   });
 
   it('rota una matriz 3x3', () => {
