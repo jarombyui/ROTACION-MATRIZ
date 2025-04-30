@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { rotarMatriz } from "../rotateMatrix";
+import { rotateMatrix } from "../rotateMatrix";
 
 function TablaMatriz({ matriz, titulo }: { matriz: number[][], titulo?: string }) {
   return (
@@ -28,7 +28,10 @@ function TablaMatriz({ matriz, titulo }: { matriz: number[][], titulo?: string }
 
 export default function Home() {
   const [textoMatriz, setTextoMatriz] = useState('');
-  const [resultadoRotacion, setResultadoRotacion] = useState<{ antihorario: number[][] } | null>(null);
+  const [resultadoRotacion, setResultadoRotacion] = useState<{
+    clockwise: number[][];
+    counterClockwise: number[][];
+  } | null>(null);
   const [error, setError] = useState('');
   const [matrizOriginal, setMatrizOriginal] = useState<number[][] | null>(null);
 
@@ -45,30 +48,40 @@ export default function Home() {
       let matriz;
       try {
         matriz = JSON.parse(textoMatriz);
-      } catch (err) {
-        throw new Error('El formato no es JSON válido. Ejemplo: [[1,2],[3,4]]');
+      } catch {
+        setError('El formato no es JSON válido. Ejemplo: [[1,2],[3,4]]');
+        return;
       }
-      if (!Array.isArray(matriz) || !matriz.every(fila => Array.isArray(fila))) {
-        throw new Error('La estructura debe ser un array de arrays. Ejemplo: [[1,2],[3,4]]');
+      if (!Array.isArray(matriz)) {
+        setError('La estructura debe ser un array de arrays. Ejemplo: [[1,2],[3,4]]');
+        return;
       }
       if (matriz.length === 0) {
-        throw new Error('La matriz no puede estar vacía.');
+        setError('La matriz no puede estar vacía.');
+        return;
+      }
+      if (!matriz.every(fila => Array.isArray(fila))) {
+        setError('Cada fila debe ser un array. Ejemplo: [[1,2],[3,4]]');
+        return;
       }
       if (!matriz.every(fila => fila.length > 0)) {
-        throw new Error('Cada fila debe tener al menos un elemento.');
+        setError('Cada fila debe tener al menos un elemento.');
+        return;
       }
       const n = matriz.length;
       if (!matriz.every(fila => fila.length === n)) {
-        throw new Error('La matriz debe ser cuadrada (todas las filas del mismo tamaño).');
+        setError('La matriz debe ser cuadrada (todas las filas del mismo tamaño).');
+        return;
       }
       if (!matriz.flat().every(celda => typeof celda === 'number' && !isNaN(celda))) {
-        throw new Error('No se permiten valores vacíos, nulos o no numéricos en la matriz.');
+        setError('No se permiten valores vacíos, nulos o no numéricos en la matriz.');
+        return;
       }
       setMatrizOriginal(matriz);
       if (n === 1) {
         setError('La matriz 1x1 no se rota, pero se muestra igual.');
       }
-      const resultado = rotarMatriz(matriz);
+      const resultado = rotateMatrix(matriz);
       setResultadoRotacion(resultado);
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Error al procesar la matriz');
@@ -117,9 +130,9 @@ export default function Home() {
           {resultadoRotacion && (
             <div className="mt-6 space-y-4">
               <div>
-                <TablaMatriz matriz={resultadoRotacion.antihorario} titulo="Rotación Anti-horaria (90° izquierda)" />
+                <TablaMatriz matriz={resultadoRotacion.counterClockwise} titulo="Rotación Anti-horaria (90° izquierda)" />
                 <div className="bg-gray-50 dark:bg-gray-700 p-3 rounded-md text-sm font-mono mt-2">
-                  {JSON.stringify(resultadoRotacion.antihorario)}
+                  {JSON.stringify(resultadoRotacion.counterClockwise)}
                 </div>
               </div>
             </div>
